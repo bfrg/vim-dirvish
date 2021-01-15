@@ -256,9 +256,9 @@ function! s:open_selected(splitcmd, bg, line1, line2) abort
     endif
 
     if isdirectory(path)
-      exe (p || a:splitcmd ==# 'edit' ? '' : a:splitcmd.'|') 'Dirvish' fnameescape(path)
+      exe (p || a:splitcmd ==# 'edit' ? '' : a:splitcmd.'|') 'Dirvish' fnameescape(fnamemodify(path, ':~:.'))
     else
-      exe (p ? 'edit' : a:splitcmd) fnameescape(path)
+      exe (p ? 'edit' : a:splitcmd) fnameescape(fnamemodify(path, ':~:.'))
     endif
 
     " Return to previous window after _each_ split, else we get lost.
